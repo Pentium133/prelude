@@ -1,9 +1,13 @@
-(defun disable-guru-mode ()
-  (guru-mode -1)
-)
-(add-hook 'prelude-prog-mode-hook 'disable-guru-mode t)
+(prelude-ensure-module-deps '(dash))
 
-(add-hook 'prog-mode-hook 'prelude-turn-off-whitespace t)
+(load-library "workspaces.el")
+(global-set-key "\C-xg" 'workspace-goto)
+
+(add-to-list 'load-path "~/.emacs.d/vendor/rinari")
+(require 'rinari)
+
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs-nav")
+(require 'nav)
 
 (global-set-key "\C-z" 'undo)
 ;; copy line
@@ -28,11 +32,6 @@
 ;; autoident
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; (load-theme 'solarized-dark t)
-
-(load-library "workspaces.el")
-(global-set-key "\C-xg" 'workspace-goto)
-
 ;; auto save
 (desktop-save-mode t)
 
@@ -44,22 +43,8 @@
 ;; подсвечивать скобочки
 (show-paren-mode 1)
 
-(add-to-list 'load-path "~/.emacs.d/vendor/rinari")
-(require 'rinari)
-
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-nav")
-(require 'nav)
 
 (scroll-bar-mode 0)
-
-(defun prelude-prog-mode-hook ()
-  "Default coding hook, useful with any programming language."
-  (flyspell-prog-mode)
-  (prelude-local-comment-auto-fill)
-  (prelude-turn-off-whitespace)
-  (prelude-turn-on-abbrev)
-  (prelude-add-watchwords)
-  (linum-mode +1))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
