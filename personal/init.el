@@ -50,3 +50,7 @@
 
 (setq org-todo-keywords
         '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+
+(set-frame-height (selected-frame) 50)
+(set-frame-width (selected-frame) 160)
+(setq initial-frame-alist '((top . 55) (left . 60)))
