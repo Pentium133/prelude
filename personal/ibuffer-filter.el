@@ -1,7 +1,17 @@
 (setq ibuffer-saved-filter-groups
       '(("home"
-        ("Twig" (filename . ".twig"))
-        ("Controllers" (filename . "Controller.php"))
+        ("View" (or
+                  (filename . ".html.erb")
+                  (filename . ".html.haml")
+                  (filename . ".twig")))
+        ("Controllers" (or 
+                  (filename . "Controller.php")
+                  (filename . "_controller.rb")))
+        ("Assets" (or 
+                  (filename . ".js")
+                  (filename . ".css")))
+        ("Helpers" (filename . "_helper.rb"))
+        ("Models" (filename . "/models/"))
         ("Repositories" (filename . "Repository.php"))
         ("emacs" (or
                   (name . "^\\*scratch\\*$")
