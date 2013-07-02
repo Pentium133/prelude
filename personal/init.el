@@ -1,4 +1,5 @@
-(prelude-ensure-module-deps '(dash))
+
+(prelude-ensure-module-deps '(dash magit ruby-end))
 
 (load-library "workspaces.el")
 (global-set-key "\C-xg" 'workspace-goto)
@@ -8,6 +9,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-nav")
 (require 'nav)
+
+(add-hook 'ruby-mode-hook 'ruby-end)
 
 (global-set-key "\C-z" 'undo)
 ;; copy line
@@ -43,7 +46,6 @@
 ;; подсвечивать скобочки
 (show-paren-mode 1)
 
-
 (scroll-bar-mode 0)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -54,3 +56,9 @@
 (set-frame-height (selected-frame) 50)
 (set-frame-width (selected-frame) 160)
 (setq initial-frame-alist '((top . 55) (left . 60)))
+
+;; smart scrolling
+(setq scroll-step 1; плавный скроллинг
+      scroll-conservatively 100000; не прыгать на середину страницы при скроллинге
+      scroll-margin 5; начинать промотку страницы за 5 сток до края
+      scroll-preserve-screen-position t); без этого не будет нормально работать страница вниз/вверх
