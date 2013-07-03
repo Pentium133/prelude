@@ -1,5 +1,5 @@
 
-(prelude-ensure-module-deps '(dash magit ruby-end))
+(prelude-ensure-module-deps '(dash magit ruby-end company))
 
 (load-library "workspaces.el")
 (global-set-key "\C-xg" 'workspace-goto)
@@ -10,7 +10,12 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-nav")
 (require 'nav)
 
+(add-to-list 'load-path "~/.emacs.d/vendor/robe")
+(require 'robe)
+(add-hook 'after-init-hook 'global-company-mode)
+
 (add-hook 'ruby-mode-hook 'ruby-end)
+(add-hook 'ruby-mode-hook 'robe-mode)
 
 (global-set-key "\C-z" 'undo)
 ;; copy line
