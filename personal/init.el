@@ -1,8 +1,10 @@
 
-(prelude-ensure-module-deps '(dash magit ruby-end company))
+(prelude-ensure-module-deps '(dash magit ruby-end company tree-mode))
 
 (load-library "workspaces.el")
 (global-set-key "\C-xg" 'workspace-goto)
+
+(load-library "dirtree.el")
 
 (add-to-list 'load-path "~/.emacs.d/vendor/rinari")
 (require 'rinari)
