@@ -19,6 +19,9 @@
 (add-hook 'ruby-mode-hook 'ruby-end)
 (add-hook 'ruby-mode-hook 'robe-mode)
 
+(require 'tabbar)
+(tabbar-mode 1)
+
 (global-set-key "\C-z" 'undo)
 ;; copy line
 ;; (global-set-key "\C-d" "\C-a\C- \C-n\M-w\C-y")
