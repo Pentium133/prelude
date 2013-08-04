@@ -16,6 +16,12 @@
 (require 'robe)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(require 'haml-mode)
+(add-hook 'haml-mode-hook
+           (lambda ()
+             (setq indent-tabs-mode nil)
+             (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+
 (add-hook 'ruby-mode-hook 'ruby-end)
 (add-hook 'ruby-mode-hook 'robe-mode)
 
